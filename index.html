@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('photo32.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #000000;
+
+            transition: background-color 0.5s, color 0.5s;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .dark-mode {
+            background-image: url('photo30.jpg');
+
+            color: #fff;
+
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #030001;
+
+            color: #fff;
+            padding: 10px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #f3eeee;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #f1ee27;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+            margin-bottom: 10px;
+        }
+
+        .container h2 {
+            font-size: 24px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container p {
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .section {
+            padding: 50px;
+            margin-bottom: 10px;
+        }
+        @media only screen and (max-width: 600px) {
+            .navbar {
+                padding: 5px;
+            }
+
+            .navbar a {
+                font-size: 12px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .container h2 {
+                font-size: 20px;
+            }
+
+            .container p {
+                font-size: 16px;
+            }
+        }
+        #about-container,
+        #achievements-container,
+        #education-container,
+        #skills-container,
+        #blog-container {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+            margin-bottom: 5px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+
+
+        #about-container {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            flex-direction: column;
+
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: italic;
+
+            padding: 20px;
+
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+
+        }
+
+        #about-container p,
+        #education-container p,
+        #skills-container p {
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+            transition: transform 0.3s ease-in-out;
+        }
+
+
+        #about-container p:hover,
+        #education-container p:hover,
+        #skills-container p:hover {
+            transform: scale(1.1);
+        }
+
+
+
+        #profile img {
+            display: block;
+            margin: auto;
+            max-width: 400px;
+            border-radius: 75%;
+            width: 200px;
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 3px solid #070104;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        #profile-container:hover img {
+            transform: scale(1.1);
+            border-color: #606158;
+        }
+
+        #profile-container {
+            text-align: center;
+        }
+
+
+
+
+
+        #achievements-container {
+            display: flex;
+            justify-content: center;
+
+            align-items: center;
+
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-style: italic;
+            padding: 20px;
+
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+
+        .achievements-animation {
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        #achievements-container p:hover {
+            transition: transform 0.3s ease-in-out;
+            transform: scale(1.1);
+        }
+
+        #education-container {
+            display: flex;
+            justify-content: center;
+
+            align-items: center;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            font-style: italic;
+            padding: 20px;
+
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+
+
+
+        #education-container h2 {
+            font-size: 24px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #education-container p {
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #skills-container {
+            display: flex;
+            justify-content: center;
+
+            align-items: center;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            font-style: italic;
+            padding: 20px;
+
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+            margin-bottom: 5px;
+        }
+
+
+        #skills-container h2 {
+            font-size: 24px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #skills-container p {
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .fa-envelope {
+            font-size: 24px;
+
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .fa-envelope:hover {
+            animation: jiggle 0.5s ease infinite;
+        }
+
+        #contacts-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-center;
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background-color: #312d2e;
+            padding: 1px;
+            z-index: 999;
+        }
+
+        #contacts-container a {
+            text-decoration: none;
+            color: #f3eeee;
+            margin: 10px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        #contacts-container a:hover {
+            color: #f1ee27;
+        }
+
+        #instagram-icon {
+            cursor: pointer;
+            transition: transform 0.3s;
+
+
+            margin-left: 3px;
+        }
+
+        #instagram-icon:hover {
+            animation: jiggle 0.5s ease infinite;
+        }
+
+        #github-icon {
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-left: 5px;
+        }
+
+        #github-icon:hover {
+            animation: jiggle 0.5s ease infinite;
+        }
+
+        .fa-github {
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-left: 5px;
+        }
+
+        .fa-github:hover {
+            animation: jiggle 0.5s ease infinite;
+        }
+
+        @keyframes jiggle {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(0);
+            }
+
+            40% {
+                transform: translateX(-5px);
+            }
+
+            60% {
+                transform: translateX(5px);
+            }
+        }
+
+
+        #blog-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            font-style: italic;
+            padding: 20px;
+
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            opacity: 0;
+
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+
+
+        #blog-container h2 {
+            font-size: 24px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .blog-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #302f2a;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .blog-link:hover {
+            background-color: #121164;
+        }
+
+
+
+
+
+        .blog-post {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #aa5185;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+
+
+
+        #dark-mode-toggle {
+            cursor: pointer;
+            font-size: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #dark-mode-toggle:hover {
+            background-color: #555;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #535151;
+            border-radius: 34px;
+            transition: 0.4s;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        input:checked+.toggle-slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.toggle-slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+    <script>
+
+        function toggleDarkMode() {
+            const toggleSwitch = document.getElementById('dark-mode-switch');
+            document.body.classList.toggle('dark-mode', toggleSwitch.checked);
+            saveDarkModePreference();
+        }
+
+
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+
+
+        function saveDarkModePreference() {
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const profileLink = document.querySelector('a[href="#profile"]');
+            const achievementsLink = document.querySelector('a[href="#achievements"]');
+            const profileImage = document.getElementById('profile-container').querySelector('img');
+            const achievementsContainer = document.getElementById('achievements-container');
+            const aboutContainer = document.getElementById('about-container');
+            const educationContainer = document.getElementById('education-container');
+            const skillsContainer = document.getElementById('skills-container');
+
+
+            darkModeToggle.addEventListener('click', function () {
+                toggleDarkMode();
+                saveDarkModePreference();
+            });
+        });
+
+
+
+        achievementsLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            achievementsContainer.classList.add('achievements-animation');
+
+
+            achievementsContainer.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+
+        function removeAnimationClass(container) {
+            container.addEventListener('animationend', function () {
+                container.classList.remove('achievements-animation');
+            });
+        }
+
+
+        removeAnimationClass(aboutContainer);
+        removeAnimationClass(educationContainer);
+        removeAnimationClass(skillsContainer);
+
+
+        function openBlogPage(blogNumber) {
+            window.open('blog' + blogNumber + '.html', '_blank');
+        }
+
+
+    </script>
+    <title>Himani - Personal Website</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="#about">About</a>
+        <a href="#profile">Profile</a>
+        <a href="#education">Education</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#skills">Skills</a>
+        <a href="#blog">Blog</a>
+        <label class="toggle-switch">
+            <input type="checkbox" id="dark-mode-switch" onchange="toggleDarkMode()">
+            <span class="toggle-slider"></span>
+        </label>
+    </div>
+
+    <section id="about" class="section">
+        <div id="about-container">
+            <h2>About Me</h2>
+            <p>I am Himani Das.I hail from a city called Jamshedpur which belongs to state of Jharkhand.I have always
+                been deeply passionate about academics since childhood.Currently I
+                am studying at the prestigious college - IIIT Hyderabad.I am enrolled in the CND programme,i.e.Btech in
+                Computer Science and Master of Science in Computational Natural Sciences by Research. Beyond
+                academics, I am an avid dog lover and my hobbies include cooking and reading books.</p>
+        </div>
+    </section>
+
+    <section id="profile" class="section">
+        <div id="profile-container">
+            <img src="himani.jpg" alt="Himani's profile image">
+
+        </div>
+    </section>
+
+    <section id="achievements" class="section">
+
+        <div id="achievements-container" class="flex-container">
+            <h2 id="achievements-title">Achievements</h2>
+            <p> Throughout my school life, I consistently secured either the first or second position in my class,
+                earning
+                gold or silver medals and mementos as recognition. I achieved an outstanding 98.2% in my class 10 ICSE
+                board
+                examinations. In my class 12th examinations, I scored an impressive 99% in PCMB in the ICSE board,
+                making me
+                the state topper in Jharkhand for the Science Stream and the 4th national topper.</p>
+        </div>
+    </section>
+    <section id="education" class="section">
+        <div id="education-container">
+            <h2>Education</h2>
+            <p>I completed my nursery education at the 'Baug e Jamshed School' in Jamshedpur.I pursued my schooling from
+                Loyola
+                School,
+                Jsr(an ICSE board school) from kindergarten to class 12.Currently,I am studying at the International
+                Institue of Information Technology-Hyderabad</p>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div id="skills-container">
+            <h2>Skills</h2>
+            <p>
+                Creativity has always been a strong suit for me. I engage in sketching and painting, and I also have
+                proficiency in creating beautiful rangolis. Additionally, my culinary skills extend to North Indian
+                cuisine,
+                and I am adept at both cooking and baking.
+            </p>
+        </div>
+    </section>
+    <section id="contact" class="section">
+        <div id="contacts-container">
+            <a href="https://www.instagram.com/himanidas_14?igsh=MTFyMDNza2MzOGl2cA%3D%3D&utm_source=qr"
+                target="_blank">
+                <i id="instagram-icon" class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+
+            </a>
+
+            <a href="https://github.com/himanidas16" target="_blank">
+                <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:himanidas1603@gmail.com">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+
+            </a>
+
+
+            <a href="resume.pdf" target="_blank" download="Himani's Resume.pdf">RESUME</a>
+        </div>
+    </section>
+
+
+    <section id="blog" class="section">
+        <div id="blog-container">
+            <h2>Blog</h2>
+
+            <button class="blog-link" onclick="openBlogPage(1)" target="_blank">Blog Post 1</button>
+            <button class="blog-link" onclick="openBlogPage(2)" target="_blank">Blog Post 2</button>
+
+        </div>
+    </section>
+
+
+</body>
+
+</html>

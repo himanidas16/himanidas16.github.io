@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Warming Blog</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        article {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        #likeCount {
+            margin-top: 10px;
+            color: #777;
+        }
+
+        #comments {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #commentList {
+            margin-top: 10px;
+        }
+
+        #commentList div {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Global Warming Blog</h1>
+    </header>
+
+    <main>
+        <article>
+            <h2>Understanding Global Warming</h2>
+            <p>Global warming is a long-term increase in the average temperature of the Earth's climate system.
+                It is a major aspect of climate change and is primarily caused by human activities, such as the
+                burning of fossil fuels and deforestation.</p>
+
+            <button onclick="toggleLike()">Like</button>
+            <div id="likeCount">Likes: <span id="likes">0</span></div>
+
+            <div id="comments">
+                <h3>Comments</h3>
+                <textarea id="commentInput" placeholder="Add a comment"></textarea>
+                <button onclick="addComment()">Add Comment</button>
+                <div id="commentList"></div>
+            </div>
+        </article>
+    </main>
+
+    <script>
+       // Load likes and comments from local storage on page load
+    window.onload = function () {
+        loadLikes();
+        loadComments();
+    };
+
+    function toggleLike() {
+        // Get the like count from localStorage
+        let currentLikes = parseInt(localStorage.getItem('likes')) || 0;
+
+        // Toggle between 0 and 1
+        currentLikes = (currentLikes === 0) ? 1 : 0;
+
+        // Update the like count in localStorage and on the page
+        localStorage.setItem('likes', currentLikes);
+        document.getElementById('likes').innerText = currentLikes;
+    }
+
+    function addComment() {
+        // Add a new comment
+        const commentInput = document.getElementById('commentInput');
+        const commentText = commentInput.value.trim();
+
+        if (commentText !== '') {
+            const commentList = document.getElementById('commentList');
+            const newComment = document.createElement('div');
+            newComment.innerText = commentText;
+            commentList.appendChild(newComment);
+
+            // Clear the comment input field
+            commentInput.value = '';
+
+            // Save comments to localStorage
+            saveComments();
+        }
+    }
+
+    function loadLikes() {
+        // Get the like count from localStorage
+        let currentLikes = parseInt(localStorage.getItem('likes')) || 0;
+        document.getElementById('likes').innerText = currentLikes;
+    }
+
+    function loadComments() {
+        // Load comments from local storage
+        let comments = JSON.parse(localStorage.getItem('comments')) || [];
+        const commentList = document.getElementById('commentList');
+
+        comments.forEach(commentText => {
+            const comment = document.createElement('div');
+            comment.innerText = commentText;
+            commentList.appendChild(comment);
+        });
+    }
+
+    function saveComments() {
+        // Save comments to localStorage
+        let comments = [];
+        const commentList = document.getElementById('commentList').children;
+
+        for (let i = 0; i < commentList.length; i++) {
+            comments.push(commentList[i].innerText);
+        }
+
+        localStorage.setItem('comments', JSON.stringify(comments));
+    }
+    </script>
+
+</body>
+
+</html>
